@@ -1,0 +1,265 @@
+
+; ===================== PIO0 =========================================================
+
+.program set_trigger
+.wrap_target
+    wait 1 GPIO 12   ;[5]   ; PRAV8D_F2
+    ;nop              [10]
+    in  pins, 12            ; read 12 bits  A0-A7 , I/O , R/W , A14 , A15 
+    wait 0 GPIO 12   ;[5]   ; PRAV8D_F2
+.wrap
+;---- 4
+
+
+.program IO_Programable_logic
+;.side_set 1 opt
+.wrap_target
+startP:
+    wait 1 GPIO 12
+    mov osr, pins
+    out null, 23
+    ;set x,0
+    ;out x,1  ; load F2
+    ;jmp !x endP
+    ;out null, 3
+    set x,0
+    out x,1  ; load I/O
+    jmp x-- endP
+    set x,0
+    out x,4  ; load A7-A4
+    jmp x-- step1
+    jmp endP
+step1:    
+    jmp x-- step2
+    set pins, 0b001         ;[5] 
+    jmp endP
+step2:
+    set pins, 0b100         ;[5] 
+    jmp endP
+endP:
+    wait 0 GPIO 12
+    set pins, 0b111         ;[5] 
+.wrap
+; ------ 19
+
+/*
+.program IO_Programable_logic
+;.side_set 1 opt
+.wrap_target
+startP:
+    mov osr, pins
+    out null, 19
+    set x,0
+    out x,1  ; load F2
+    jmp !x endP
+    out null, 3
+    set x,0
+    out x,1  ; load I/O
+    jmp x-- endP
+    set x,0
+    out x,4  ; load A7-A4
+    jmp x-- step1
+    jmp endP
+step1:    
+    jmp x-- step2
+    set pins, 0b001         ;[5] 
+    jmp startP
+step2:
+    set pins, 0b100         ;[5] 
+    jmp startP
+endP:
+    set pins, 0b111         ;[5] 
+.wrap
+; ------ 19
+*/
+
+.program EPROM_data
+.wrap_target
+    wait 0 GPIO 12   [22]   ; Wait F2 to 0 (down front)
+    in  pins, 8     ; [4]   ; [6]     ; read 
+    out pins, 8     ; [4]   ; [8]
+    wait 1 GPIO 12  ; [5]   ; PRAV8D_F2
+.wrap
+;----- 4
+; total - 27
+
+
+; ===================== PIO1 =========================================================
+
+.program extra16kRAM_MAP_signal
+.wrap_target
+    wait 0 GPIO 12      [20] ;[29]      ; Wait F2 to 0 (down front)
+    mov osr, pins                   ; get 3 bytes to OSR  (R/W , A14 , A15)
+    set y,0                         
+    out y,1  ; load RW              ; Load R/W to Y
+    jmp !y pulse                    
+    jmp !x end2
+pulse:
+    ;mov osr, pins
+    set y,0
+    out y,2  ; load A14,A15
+    jmp y-- stp1
+    jmp end2
+stp1:    
+    jmp y-- stp2
+    jmp end2
+stp2:    
+    jmp y-- stp3
+    jmp end2
+stp3:    
+    nop                 [30]
+    nop                 [30]
+    set pins, 0         [25]     ; MAP to lowend2:
+    nop                 [29];[19]
+    nop                 [25];[15]
+;    nop                 [8];nov
+end2:                   
+    wait 1 GPIO 12      ;[1] ;[18]   ; Wait F2 to 1 (up front)
+    set pins, 1         ;[5]    ; set MAP to high
+.wrap
+
+
+
+
+
+
+
+
+
+
+
+
+;================================================
+;================================================
+;================================================
+;================================================
+;================================================
+;================================================
+;================================================
+;================================================
+;================================================
+
+
+
+
+
+/*
+    mov osr, pins
+    set x,0
+    set y,35
+    out null, 19
+    out x,4  ; load I/O
+startP:
+    jmp x-- step1
+    jmp endC
+step1:
+    set pins, 0b111         [31] 
+    nop                     [31]
+    nop                     [31]
+    set pins, 0b000         [31] 
+    nop                     [31]
+    nop     
+    jmp startP              [31]
+endC:
+    set pins, 0b000         [31] 
+    nop                     [31]
+    nop                     [31]
+    nop                     [31]
+    nop                     [31]
+    nop                     [31]
+    nop                     [31]
+
+*/
+    ;in  pins, 13            ; read 13 bits  A0-A7 , I/O , R/W , A14 , A15 , F2
+;    mov osr, pins
+;    out null, 8 ; drop first 8 bits
+;    set x,0
+;    out x, 5 ; load I/O
+;    jmp x-- step1
+;    jmp endP
+;step1:    
+;    set pins, 0b000         [5] 
+;    out null, 3 ; drop next 3 bits
+;    set x,0
+;    out x, 1 ; Load F2
+;    jmp !x endP
+;    mov osr, pins
+;    out null, 4 ; drop first 4 bits
+;    set x,0
+;    out x, 4 ; Load A4 - A7
+;    jmp x-- endP
+;    jmp x-- step2
+;    set pins, 0b100         [5] 
+;    jmp startP
+;step2:
+;    set pins, 0b000         [5] 
+;    jmp startP
+;endP:
+;    set pins, 0b111         [5] 
+
+
+/*
+;start:
+    wait 1 GPIO 20   [5]   ; PRAV8D_F2
+    set x,0
+    set y,0
+    nop              [5]
+    in  pins, 12            ; read 12 bits  A0-A7 , I/O , R/W , A14 , A15
+loop1:
+    jmp !x loop1
+    jmp !y end
+
+    wait 0 GPIO 20   [1]    ; PRAV8D_F2
+    nop                 [28]
+    nop                 [28]
+    set pins, 0         [24] ; activate A8-A15
+;    wait 1 GPIO 20      [19]    ; PRAV8D_F2
+end:
+    set pins, 1         [5] ; activate A8-A15
+*/
+
+
+;    mov x,isr
+
+;    set pins, 0         [20] ; activate A8-A15
+;    wait 1 GPIO 20      [5]    ; PRAV8D_F2
+;    set pins, 1         [5] ; activate A8-A15
+
+
+;    nop                 [28]
+;    nop                 [28]
+;    set pins, 0         [5] ; activate A8-A15
+;    set pins, 1         [5] ; activate A8-A15
+
+
+
+
+;    nop                     [28]
+;    set pins, 0b110         [6] ; activate A0-A7, side 1 is clock high
+;    in  pins, 8                  ; read 8 bits
+;    set pins, 0b101         [5] ; activate A8-A15
+;    in  pins, 24                  ; read 8 bits, OEs, r/w bit and some random bits
+;    set pins, 0b111         [3] ; activate D0-D7
+ ;   wait 1 GPIO 19           ; PRAV8D_F2
+;    jmp pin end
+ ;   //jmp x-- end
+;    set pins, 0b011          ; activate D0-D7
+;    mov osr, ~null               ; set pins 0-7 to OUT
+;    out pindirs, 8
+;    out pins, 8                  ; Write out data
+;end:
+;.wrap
+
+;.program extra16kRAM_MAP_signal
+;.wrap_target
+;    nop
+;    jmp !x end2
+;    wait 0 GPIO 20      ;[27]       ; PRAV8D_F2
+;    nop                 [28]
+;    nop                 [28]
+;    set pins, 0         [5] ; activate A8-A15
+;    wait 1 GPIO 20      [19]    ; PRAV8D_F2
+;end2:
+;    set pins, 1         [5] ; activate A8-A15
+;.wrap
+

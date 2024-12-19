@@ -1,0 +1,92 @@
+
+; ===================== PIO0 =========================================================
+
+.program set_trigger
+.wrap_target
+    wait 1 GPIO 12   ;[5]   ; PRAV8D_F2
+    in  pins, 12            ; read 12 bits  A0-A7 , I/O , R/W , A14 , A15 
+    wait 0 GPIO 12   ;[5]   ; PRAV8D_F2
+.wrap
+; --- 3
+
+.program IO_Control_logic
+.wrap_target
+startP_IO:
+    mov osr, pins 
+    out null, 23 
+    set x,0     
+    out x,5   ; load I/O , A7-A4
+    jmp x-- io_set 
+    set pins 1
+    jmp startP_IO
+io_set:
+    set pins 0    
+.wrap
+
+.program IO_Programable_logic
+.side_set 3 opt
+.wrap_target
+startP:
+    wait 1 GPIO 12  
+    mov osr, pins 
+    out null, 23 
+    set x,0  
+    out x,1    ; load I/O
+    jmp x-- endP
+    set x,0     
+    out x,4   ; load A7-A4
+    jmp x-- step1 
+    jmp endP 
+step1:   
+    jmp x-- step2   
+    jmp endP    side  0b001
+step2:
+    jmp endP    side  0b100
+endP:
+    wait 0 GPIO 12
+    nop         side  0b111
+.wrap
+
+; ===================== PIO1 =========================================================
+
+.program extra16kRAM_MAP_signal
+.wrap_target
+    wait 0 GPIO 12      [20] ;[29]      ; Wait F2 to 0 
+    mov osr, pins                   ; get 3 bytes to OSR  (R/W , A14 , A15)
+    set y,0                         
+    out y,1  ; load RW              ; Load R/W to Y
+    jmp !y pulse                    
+    jmp !x end2
+pulse:
+    set y,0
+    out y,2  ; load A14,A15
+    jmp y-- stp1
+    jmp end2
+stp1:    
+    jmp y-- stp2
+    jmp end2
+stp2:    
+    jmp y-- stp3
+    jmp end2
+stp3:    
+    nop                 [30]
+    nop                 [30]
+    set pins, 0         [25]     ; MAP to lowend2:
+    nop                 [29];[19]
+    nop                 [25];[15]
+end2:                   
+    wait 1 GPIO 12      ;[1] ;[18]   ; Wait F2 to 1 (up front)
+    set pins, 1         ;[5]    ; set MAP to high
+.wrap
+; ------- 22
+
+.program EPROM_data
+.wrap_target
+    wait 0 GPIO 12   [20]   ; Wait F2 to 0 (down front)
+    in  pins, 8      [5]   ; [6]     ; read 
+    out pins, 8      [6]   ; [8]
+    wait 1 GPIO 12  ; [5]   ; PRAV8D_F2
+.wrap
+;----- 4
+
+
