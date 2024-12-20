@@ -15,6 +15,7 @@ Of course, first I called my mother to ask her if my old computer was still lyin
 A little battered and missing a single key, but - WORKING.
 Unfortunately, the floppy disk drive and the controller were not preserved.
 
+<br>
 <img src="imgs/old_friend.jpg" width=200 height=200></img>
 <img src="imgs/old_friend-d.jpg" width=200 height=200></img>
 <br>
@@ -81,6 +82,48 @@ After I did all the wiring, it was finally time to close the whole computer and 
 <td><img src="imgs/karate.jpg" width=200 height=200></img></td>
 </tr>
 </table>
+
+
+<br>
+
+<font size=+3><b>Let's talk about the project.</b></font>
+
+<br><br>
+
+For design Schematics and PCBs I use <a href=https://easyeda.com/> EasyEDA </a> system. 
+And order boards direcly from this CAD to <a href=https://jlcpcb.com/>JLCPCB</a>
+
+
+You can find this projects here : 
+<table>
+<tr><td><a href=https://u.easyeda.com/account/user/projects/index/detail?project=f9a5f7ce3ed544789af7b89d13e4c8b0&listType=all> Main LOGIC - AY-3-8910</a></td></tr>
+<tr><td><a href=https://u.easyeda.com/account/user/projects/index/detail?project=a509fb325f5442a4b764fb28fe258eaf&listType=all> Keyboard</a></td></tr>
+<tr><td><a href=https://u.easyeda.com/account/user/projects/index/detail?project=205ad6d6b13543d9b9c6c1f6ccf78b0d&listType=all> VIDE upscaler</a></td></tr>
+<tr><td><a href=https://u.easyeda.com/account/user/projects/index/detail?project=bce4df32041e4f5abfc7ceaee0b3d13a&listType=all> EPROM - extender</a></td></tr>
+<tr><td><a href=https://u.easyeda.com/account/user/projects/index/detail?project=6507ddaba1c34345acee42c7cf9b6195&listType=all> display and monitor buttons</a></td></tr>
+<tr><td><a href=https://u.easyeda.com/account/user/projects/index/detail?project=251d1eb9b4c64a02beb64955f6f17d24&listType=all> LEDs</a></td></tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
