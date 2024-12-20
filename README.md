@@ -33,6 +33,7 @@ During the development, I also had the idea of ​​making a dynamic ROM. For t
 
 
 I put all this together on one board. I also made a keyboard for it and the result is this:
+<br>
 <img src="imgs/p8d-2.jpg" width=200 height=200></img>
 <img src="imgs/p8d-1.jpg" width=200 height=200></img>
 <br>
