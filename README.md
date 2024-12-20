@@ -57,7 +57,7 @@ After I made the upscaler, I mounted everything in the top cover of the machine.
 And fully wired : 
 
 <br>
-<img src="imgs/top.jpg" width=200 height=200></img>
+<img src="imgs/top-wired.jpg" width=200 height=200></img>
 <br>
 
 
@@ -66,3 +66,18 @@ here is a back of dosplay :
 <br>
 <img src="imgs/display.jpg" width=200 height=200></img>
 <br>
+
+
+So,
+After I did all the wiring, it was finally time to close the whole computer and test it. Everything is OK.
+
+<br>
+<img src="imgs/start.jpg" width=200 height=200></img>
+<img src="imgs/start-oric.jpg" width=200 height=200></img>
+<img src="imgs/dos.jpg" width=200 height=200></img>
+<img src="imgs/karate.jpg" width=200 height=200></img>
+<br>
+
+
+
+
