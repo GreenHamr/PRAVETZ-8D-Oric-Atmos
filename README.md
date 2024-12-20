@@ -117,7 +117,7 @@ To expand the capabilities of this computer, I also replaced the standard 27C128
 Everything else is based on the original ORIC solution.
 <br>
 
-Unfortunately, it is also difficult to find the specialized ULA HCS10017 chip, but it is still available on the market. I found a few on <a href=https://www.ebay.com/sch/i.html?_from=R40&_trksid=p4432023.m570.l1313&_nkw=HCS10017&_sacat=0>eBay</a>.
+Unfortunately, it is also difficult to find the specialized ULA HCS10017 chip, but it is still available on the market. I found a few on eBay.
 
 
 
