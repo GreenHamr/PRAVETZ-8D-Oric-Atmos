@@ -106,9 +106,18 @@ You can find this projects here :
 
 
 
+<font size=+3><b>Changes from original schematics</b></font>
+<br>
 
+In the original solution of Oric the sound generator AY-3-8912 was used. However, this chip is hard to find and quite expensive (about 30 EURO), so I dug around and found that there is another one from the same series: AY-3-9810 which performs the same functions, is easier to find and is much cheaper. It can be found for about 2 USD.
+<br>
+To expand the capabilities of this computer, I also replaced the standard 27C128 EPROM with an emulator that allows you to choose which version of the Program BASIC to choose.
+<br>
 
+Everything else is based on the original ORIC solution.
+<br>
 
+Unfortunately, it is also difficult to find the specialized ULA HCS10017 chip, but it is still available on the market. I found a few on <a href=https://www.ebay.com/sch/i.html?_from=R40&_trksid=p4432023.m570.l1313&_nkw=HCS10017&_sacat=0>eBay</a>.
 
 
 
