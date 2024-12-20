@@ -51,7 +51,7 @@ So I set about making my own upscaler - another RP2040 which intercepts the vide
 After I made the upscaler, I mounted everything in the top cover of the machine.
 
 <br>
-<img src="imgs/top.jpg" width=200 height=200></img>
+<img src="imgs/top.jpg" width=400 height=200></img>
 <br>
 
 And fully wired : 
