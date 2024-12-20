@@ -71,13 +71,16 @@ here is a back of dosplay :
 So,
 After I did all the wiring, it was finally time to close the whole computer and test it. Everything is OK.
 
-<br>
-<img src="imgs/start.jpg" width=200 height=200></img>
-<img src="imgs/start-oric.jpg" width=200 height=200></img>
-<img src="imgs/dos.jpg" width=200 height=200></img>
-<img src="imgs/karate.jpg" width=200 height=200></img>
-<br>
-
+<table border=0>
+<tr>
+<td><img src="imgs/start.jpg" width=200 height=200></img></td>
+<td><img src="imgs/start-oric.jpg" width=200 height=200></img></td>
+</tr>
+<tr>
+<td><img src="imgs/dos.jpg" width=200 height=200></img></td>
+<td><img src="imgs/karate.jpg" width=200 height=200></img></td>
+</tr>
+</table>
 
 
 
