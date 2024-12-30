@@ -96,7 +96,7 @@ And order boards direcly from this CAD to <a target="NEW" href=https://jlcpcb.co
 
 You can find this projects here : 
 <table>
-<tr><td><a target="NEW" href=https://u.easyeda.com/account/user/projects/index/detail?project=f9a5f7ce3ed544789af7b89d13e4c8b0&listType=all> Main LOGIC - AY-3-8910</a></td></tr>
+<tr><td><a target="NEW" href=https://u.easyeda.com/account/user/projects/index/detail?project=c6d01d93ac2549a29140f4bee5cfe490&listType=all> Main LOGIC - AY-3-8910</a></td></tr>
 <tr><td><a target="NEW" href=https://u.easyeda.com/account/user/projects/index/detail?project=a509fb325f5442a4b764fb28fe258eaf&listType=all> Keyboard</a></td></tr>
 <tr><td><a target="NEW" href=https://u.easyeda.com/account/user/projects/index/detail?project=205ad6d6b13543d9b9c6c1f6ccf78b0d&listType=all> VIDEO upscaler</a></td></tr>
 <tr><td><a target="NEW" href=https://u.easyeda.com/account/user/projects/index/detail?project=bce4df32041e4f5abfc7ceaee0b3d13a&listType=all> EPROM - extender</a></td></tr>
